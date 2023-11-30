@@ -1,53 +1,7 @@
-<!DOCTYPE html>
-<html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <!-- Inclure le fichier header.html -->
-    <include src="header.html"></include>
-
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Parisienne"
-    />
-    <style>
-      body {
-        font-family: "Parisienne", cursive;
-        background-color: #ffffff; /* Fond blanc */
-        text-align: center;
-        padding: 20px;
-      }
-
-      h1 {
-        color: #1e6f79; /* Bleu-vert */
-      }
-
-      .btn-group {
-        margin-top: 30px;
-      }
-
-      .btn {
-        font-family: "Parisienne", cursive;
-        font-size: 18px;
-        padding: 15px 30px;
-        margin: 10px;
-        border: 2px solid #1e6f79; /* Bordure bleu-vert */
-        background-color: #ffffff; /* Fond blanc */
-        color: #1e6f79; /* Texte bleu-vert */
-        text-decoration: none;
-        display: inline-block;
-        transition: background-color 0.3s, color 0.3s;
-      }
-
-      .btn:hover {
-        background-color: #1e6f79; /* Fond bleu-vert au survol */
-        color: #ffffff; /* Texte blanc au survol */
-      }
-    </style>
-  </head>
+{% extends "base.html" %} {% block title %}FastAPI Starter{% endblock %} {%
+    block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
+    'include/sidebar.html' %}
+    
   <body>
     <!-- Contenu spécifique de la page -->
 
@@ -62,3 +16,4 @@
     <include src="footer.html"></include>
   </body>
 </html>
+{% endblock %} {% block scripts %} {{ super() }} {% endblock %}
