@@ -15,7 +15,9 @@ async def home(request: Request) -> Response:
         "titreSound": "GoToSound",
         "titrePicture" : "GotoPicture",
         "titreText" : "GoToText",
-        "titreVideo":"GoToVideo"
+        "titreVideo":"GoToVideo",
+        "titreContact":"GoToContact",
+        "titreCGU":"CGU"
     }
     return templates.TemplateResponse("home.html", {"request": request, "data": data})
 
