@@ -1,0 +1,19 @@
+{% extends "base.html" %} {% block title %}FastAPI Starter{% endblock %} {%
+    block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
+    'include/sidebar.html' %}
+    
+  <body>
+    <!-- Contenu spécifique de la page -->
+
+    <!-- Boutons pour naviguer vers différentes pages -->
+    <div class="btn-group">
+      <a class="btn" href="Picture.html">{{data.titrePicture}}</a>
+      <a class="btn" href="Sound.html">{{data.titreSound}}</a>
+      <a class="btn" href="Text.html">{{data.titreText}}</a>
+      <a class="btn" href="Video.html">{{data.titreVideo}}</a>
+    </div>
+    <!-- Inclure le fichier footer.html -->
+    <include src="footer.html"></include>
+  </body>
+</html>
+{% endblock %} {% block scripts %} {{ super() }} {% endblock %}
