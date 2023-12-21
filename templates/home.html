@@ -7,13 +7,11 @@
 
     <!-- Boutons pour naviguer vers différentes pages -->
     <div class="btn-group">
-      <a class="btn" href="Picture.html">{{data.titrePicture}}</a>
-      <a class="btn" href="Sound.html">{{data.titreSound}}</a>
-      <a class="btn" href="Text.html">{{data.titreText}}</a>
-      <a class="btn" href="Video.html">{{data.titreVideo}}</a>
+      <a class="btn" href="/Picture">{{data.titrePicture}}</a>
+      <a class="btn" href="/Sound">{{data.titreSound}}</a>
+      <a class="btn" href="/Text">{{data.titreText}}</a>
+      <a class="btn" href="/Video">{{data.titreVideo}}</a>
     </div>
-    <!-- Inclure le fichier footer.html -->
-    <include src="footer.html"></include>
   </body>
 </html>
 {% endblock %} {% block scripts %} {{ super() }} {% endblock %}
