@@ -1,29 +1,16 @@
 {% extends "base.html" %} {% block title %}FastAPI Starter{% endblock %} {%
-    block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
-    'include/sidebar.html' %}
-    
-  <body>
-    <!-- Contenu spécifique de la page -->
+  block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
+  'include/sidebar.html' %}
+  
+<body>
+  <!-- Contenu spécifique de la page -->
 
-    <h1>Entrez du texte:</h1>
-    <form method="post" action="/submit">
-        <input type="text" name="text_input" required>
-        <button type="submit">Soumettre</button>
-    </form>
-
-    <!-- Form à remplir-->
-    <!-- <div class="container mt-5">
-        <form method="post" action="/submit_form/">
-            <div class="form-group">
-                <label for="text_input">Texte :</label>
-                <input type="text" class="form-control" id="text_input" name="text_input" required>
-            </div>
-            <button type="submit" class="btn btn-primary" name="Link" value="Link">Link</button>
-            <button type="submit" class="btn btn-secondary" name="Text" value="Text">Text</button>
-        </form>
-    </div> -->
-    <!-- Inclure le fichier footer.html
-    <include src="footer.html"></include> -->
-  </body>
+  <!-- Boutons pour naviguer vers différentes pages -->
+  <div class="btn-group">
+    <a class="btn" href="/Picture">{{data.titrePicture}}</a>
+    <a class="btn" href="/Sound">{{data.titreSound}}</a>
+    <a class="btn" href="/Video">{{data.titreVideo}}</a>
+  </div>
+</body>
 </html>
 {% endblock %} {% block scripts %} {{ super() }} {% endblock %}
