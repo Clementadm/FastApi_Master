@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}FastAPI Starter{% endblock %} {%
+    block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
+    'include/sidebar.html' %}
+    
+  <body>
+    <!-- Contenu spécifique de la page -->
+
+    <h1>Entrez du texte:</h1>
+    <h1>Texte soumis avec succès!</h1>
+    <p>Texte saisi: {{ text_input }}</p>
+    <p><a href="/">Retour</a></p>
+
+  </body>
+</html>
+{% endblock %} {% block scripts %} {{ super() }} {% endblock %}
