@@ -3,7 +3,7 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 # from Text.html import checkbox_Text, checkbox_Url
-from scraping_function import hello
+from scraping_function import scrap_url_user
 
 def configuration_route(app: FastAPI):
     app.mount(
@@ -52,7 +52,7 @@ def configuration_route(app: FastAPI):
         if RadioToChooseTEXTorURL=="HaveChooseURL":
             # scraper le text du body de l'URL
             print("2-HaveChooseURL", RadioToChooseTEXTorURL)
-            print(hello(text_input))
+            print(scrap_url_user(text_input))
             
         return templates.TemplateResponse("submitted.html", {"request": request, "text_input": text_input})
     
