@@ -31,15 +31,15 @@ def configuration_route(app: FastAPI):
 
     @app.get('/Video', response_class=HTMLResponse)
     def Video(request: Request):
-        return pages_templates.TemplateResponse("Video.html", {"request": request, "data": data})
+        return templates.TemplateResponse("Video.html", {"request": request, "data": data})
 
     @app.get('/Sound', response_class=HTMLResponse)
     def Sound(request: Request):
-        return pages_templates.TemplateResponse("Sound.html", {"request": request, "data": data})
+        return templates.TemplateResponse("Sound.html", {"request": request, "data": data})
 
     @app.get('/Picture', response_class=HTMLResponse)
     def Picture(request: Request):
-        return pages_templates.TemplateResponse("Picture.html", {"request": request, "data": data})
+        return templates.TemplateResponse("Picture.html", {"request": request, "data": data})
 
     # Gérer la soumission du formulaire
     @app.post("/submit/")
