@@ -47,10 +47,10 @@ def configuration_route(app: FastAPI):
 
         # Vérification de si l'utilisateur à remplie du text ou une URL
         if RadioToChooseTEXTorURL=="HaveChooseText":
-            print("RadioToChooseTEXTorURL", RadioToChooseTEXTorURL)
+            print("1-HaveChooseText", RadioToChooseTEXTorURL)
         if RadioToChooseTEXTorURL=="HaveChooseURL":
             # scraper le text du body de l'URL
-            print("URL")
+            print("2-HaveChooseURL", RadioToChooseTEXTorURL)
             
         return templates.TemplateResponse("submitted.html", {"request": request, "text_input": text_input})
     
