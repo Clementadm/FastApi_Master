@@ -1,7 +1,8 @@
-from fastapi import FastAPI, Request, Response
+from fastapi import FastAPI, Request, Response, Form
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
+# from Text.html import checkbox_Text, checkbox_Url
 
 def configuration_route(app: FastAPI):
     app.mount(
@@ -25,7 +26,7 @@ def configuration_route(app: FastAPI):
 
     @app.get('/Text', response_class=HTMLResponse)
     def Text(request: Request):
-        return pages_templates.TemplateResponse("Text.html", {"request": request, "data": data})
+        return templates.TemplateResponse("Text.html", {"request": request, "data": data})
 
     @app.get('/Video', response_class=HTMLResponse)
     def Video(request: Request):
@@ -38,5 +39,19 @@ def configuration_route(app: FastAPI):
     @app.get('/Picture', response_class=HTMLResponse)
     def Picture(request: Request):
         return pages_templates.TemplateResponse("Picture.html", {"request": request, "data": data})
+
+    # Gérer la soumission du formulaire
+    @app.post("/submit/")
+    def submit_form(request: Request, text_input: str = Form(...), RadioToChooseTEXTorURL: str = Form(...)):
+        print(text_input, "\n", RadioToChooseTEXTorURL)
+
+        # Vérification de si l'utilisateur à remplie du text ou une URL
+        if RadioToChooseTEXTorURL=="HaveChooseText":
+            print("RadioToChooseTEXTorURL", RadioToChooseTEXTorURL)
+        if RadioToChooseTEXTorURL=="HaveChooseURL":
+            # scraper le text du body de l'URL
+            print("URL")
+            
+        return templates.TemplateResponse("submitted.html", {"request": request, "text_input": text_input})
     
     return app
