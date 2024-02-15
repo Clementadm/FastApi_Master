@@ -11,7 +11,7 @@ def scrap_url_user(url_input):
         title_page = soup.title
         content = soup.get_text()
         # content = re.sub(r'\n{2,}', '\n', str(content))
-        print(f'{content}')
+        return content
     else :
         print("Error when scraping ", str(url_input), " check the scrap_url_user function")
 
