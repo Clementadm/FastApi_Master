@@ -2,13 +2,7 @@
     block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
     'include/sidebar.html' %}
     
-  <body>
-    <!-- Contenu spécifique de la page -->
-    <!-- <p>In order to distinguish if the text is either negative or positive </p>
-      <form method="post" action="/submit/">
-          <input type="text" name="text_input" required>
-      </form> -->
-  
+  <body>  
     <h1>Entrez du texte:</h1>
     <form method="post" action="/submit/" style="margin:0 auto;width:800px;">
         <div class="form-row">

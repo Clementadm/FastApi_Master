@@ -1,8 +1,10 @@
-from fastapi import FastAPI, Request, Response, Form
+from fastapi import FastAPI, Request, Response, Form, UploadFile, File
+from fastapi.responses import FileResponse
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
-# from Text.html import checkbox_Text, checkbox_Url
+from time import sleep
+import uuid
 from scraping_function import scrap_url_user
 
 def configuration_route(app: FastAPI):
@@ -41,7 +43,7 @@ def configuration_route(app: FastAPI):
     def Picture(request: Request):
         return templates.TemplateResponse("Picture.html", {"request": request, "data": data})
 
-    # Gérer la soumission du formulaire
+    # Gérer la soumission du formulaire Text
     @app.post("/submit/")
     def submit_form(request: Request, text_input: str = Form(...), RadioToChooseTEXTorURL: str = Form(...)):
         # print(text_input, "\n", RadioToChooseTEXTorURL)
@@ -56,4 +58,22 @@ def configuration_route(app: FastAPI):
             
         return templates.TemplateResponse("submitted.html", {"request": request, "text_input": text_input})
     
+    FILEDIR = "static/file_upload/"
+    @app.post("/submitted_files/")
+    async def create_upload_file(request: Request, file_input: UploadFile = File(...)):
+
+        file_input.filename = f"{uuid.uuid4()}.jpg"
+        contents = await file_input.read()  # <-- Important!
+
+        # example of how you can save the file
+        with open(f"{FILEDIR}{file_input.filename}", "wb") as f:
+            f.write(contents)
+        
+        print("file_input.filename : ", file_input.filename)
+        sleep(10)
+        print("file_input.filename : ", file_input.filename)
+        file_path = request.url_for("static", path="file_upload/"+file_input.filename)
+        return templates.TemplateResponse("submitted_files.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
+    # soit check l'extention fichier et en fonction rediriger vers le bon html
+    # ou faire 4 fonction et 4 html 
     return app
