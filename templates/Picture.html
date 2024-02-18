@@ -2,36 +2,17 @@
     block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
     'include/sidebar.html' %}
     
-  <body>
-    <!-- Contenu spécifique de la page -->
-    <!-- <p>In order to distinguish if the text is either negative or positive </p>
-      <form method="post" action="/submit/">
-          <input type="text" name="text_input" required>
-      </form> -->
-  
-    <h1>Entrez du texte:</h1>
+  <body>  
+    <h1>Upload a Picture:</h1>
     <form method="post" action="/submit/" style="margin:0 auto;width:800px;">
         <div class="form-row">
-          <p style="margin:0 auto;">In order to distinguish if the text is either negative or positive </p>
+          <p style="margin:0 auto;">In order to distinguish if picture is either negative or positive </p>
         </div>
-        <div class="form-row">
-          <div class="form-check" >
-            <input class="form-check-input" type="radio" name="RadioToChooseTEXTorURL" id="TEXT" value="HaveChooseText" checked>
-            <label class="form-check-label" for="TEXT">TEXT    </label>
-          </div>
-          <div class="form-check">
-            <input class="form-check-input" type="radio" name="RadioToChooseTEXTorURL" id="URL" value="HaveChooseURL">
-            <label class="form-check-label" for="URL">URL          </label>
-          </div>
-          <div class="form-group col-md-4">
-            <p>azertyuiop</p>
-          </div>
+        
+        <div class="mb-3">
+            <label for="formFile" class="form-label">Default file input example</label>
+            <input class="form-control" type="file" id="formFile">
         </div>
-        <div class="form-group">
-          <label for="inputAddress">Text or URL</label>
-          <input type="text" class="form-control" name="text_input" placeholder="Please, fill the text or URL here" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Soumettre</button>
       </form>
   </body>
   </html>

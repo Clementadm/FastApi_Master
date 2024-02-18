@@ -34,11 +34,25 @@
 
       .madeby {
         text-align: center;
-        font-size: 70%
+        font-size: 70%;
       }
 
       h1 {
         color: #1e6f79; /* Bleu-vert */
+      }
+
+      /* Form input texte files ==> picture.html */
+      input[type="file"]::file-selector-button {
+        padding: 0.2em 0.4em;
+        border-radius: 0.2em;
+        background-color: #1e6f79;
+        text-decoration-color: grey;
+        transition: 1s;
+      }
+
+      input[type="file"]::file-selector-button:hover {
+        background-color: #ffffff;
+        border: 2px solid #00cec9;
       }
 
       .btn-group {
