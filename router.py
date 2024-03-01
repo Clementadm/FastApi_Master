@@ -45,7 +45,7 @@ def configuration_route(app: FastAPI):
 
     # Gérer la soumission du formulaire Text
     @app.post("/submit/")
-    def submit_form(request: Request, text_input: str = Form(...), RadioToChooseTEXTorURL: str = Form(...)):
+    def submitted_text(request: Request, text_input: str = Form(...), RadioToChooseTEXTorURL: str = Form(...)):
         # print(text_input, "\n", RadioToChooseTEXTorURL)
 
         # Vérification de si l'utilisateur à remplie du text ou une URL
@@ -59,7 +59,7 @@ def configuration_route(app: FastAPI):
         return templates.TemplateResponse("submitted.html", {"request": request, "text_input": text_input})
     
     FILEDIR_picture = "static/file_upload/Picture/"
-    image_extension = ['jpg', 'jpeg', 'png', 'gif']
+    image_extension = ['jpg', 'jpeg', 'png']
     @app.post("/submitted_picture/")
     async def submitted_picture(request: Request, file_input: UploadFile = File(...)):        
         file_extension = file_input.filename.split('.')[-1].lower()
@@ -85,7 +85,7 @@ def configuration_route(app: FastAPI):
             print("ERROR")
         
     FILEDIR_video = "static/file_upload/video/"
-    video_extension = ['mp4']
+    video_extension = ['mp4', 'avi', 'mkv', 'mov']
     @app.post("/submitted_video/")
     async def submitted_video(request: Request, file_input: UploadFile = File(...)):
         file_extension = file_input.filename.split('.')[-1].lower()
@@ -110,7 +110,7 @@ def configuration_route(app: FastAPI):
     
 
     FILEDIR_sound = "static/file_upload/sound/"
-    sound_extension = ['mp3']
+    sound_extension = ['mp3', 'wav']
     @app.post("/submitted_sound/")
     async def submitted_sound(request: Request, file_input: UploadFile = File(...)):
         file_extension = file_input.filename.split('.')[-1].lower()
