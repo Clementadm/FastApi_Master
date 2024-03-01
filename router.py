@@ -59,43 +59,79 @@ def configuration_route(app: FastAPI):
         return templates.TemplateResponse("submitted.html", {"request": request, "text_input": text_input})
     
     FILEDIR_picture = "static/file_upload/Picture/"
+    image_extension = ['jpg', 'jpeg', 'png', 'gif']
     @app.post("/submitted_picture/")
-    async def create_upload_file(request: Request, file_input: UploadFile = File(...)):
+    async def submitted_picture(request: Request, file_input: UploadFile = File(...)):        
+        file_extension = file_input.filename.split('.')[-1].lower()
 
+        # anonimisation des noms de fichiers
         file_input.filename = f"{uuid.uuid4()}.jpg"
         contents = await file_input.read()  # <-- Important!
 
-        # example of how you can save the file
-        with open(f"{FILEDIR_picture}{file_input.filename}", "wb") as f:
-            f.write(contents)
+        # a remplacer par switch case ? 
+        # si oui changer de version de python
+        if file_extension in image_extension:
+            # example of how you can save the file
+            with open(f"{FILEDIR_picture}{file_input.filename}", "wb") as f:
+                f.write(contents)
 
-        sleep(5)
-        file_path = request.url_for("static", path="file_upload/Picture/" + file_input.filename)
-        print("file_input.filename : ", file_input.filename)
-        print("file_path : ", file_path)
-
-        return templates.TemplateResponse("submitted_picture.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
-    # soit check l'extention fichier et en fonction rediriger vers le bon html
-    # ou faire 4 fonction et 4 html 
-
-
-    FILEDIR_picture = "static/file_upload/video/"
+            sleep(5)
+            file_path = request.url_for("static", path="file_upload/Picture/" + file_input.filename)
+            print("file_input.filename : ", file_input.filename)
+            print("file_path : ", file_path)
+            print("file_extension", file_extension)
+            return templates.TemplateResponse("submitted_picture.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
+        else :
+            print("ERROR")
+        
+    FILEDIR_video = "static/file_upload/video/"
+    video_extension = ['mp4']
     @app.post("/submitted_video/")
-    async def create_upload_file(request: Request, file_input: UploadFile = File(...)):
-
+    async def submitted_video(request: Request, file_input: UploadFile = File(...)):
+        file_extension = file_input.filename.split('.')[-1].lower()
         file_input.filename = f"{uuid.uuid4()}.mp4"
         contents = await file_input.read()  # <-- Important!
 
-        # example of how you can save the file
-        with open(f"{FILEDIR_picture}{file_input.filename}", "wb") as f:
-            f.write(contents)
-        
-        sleep(5)
-        file_path = request.url_for("static", path="file_upload/video/" + file_input.filename)
-        print("file_input.filename : ", file_input.filename)
-        print("file_path : ", file_path)
-        
-        return templates.TemplateResponse("submitted_video.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
+        if file_extension in video_extension:
+            # example of how you can save the file
+            with open(f"{FILEDIR_video}{file_input.filename}", "wb") as f:
+                f.write(contents)
+            
+            sleep(5)
+            file_path = request.url_for("static", path="file_upload/video/" + file_input.filename)
+            print("file_input.filename : ", file_input.filename)
+            print("file_path : ", file_path)
+            print("file_extension", file_extension)
+            return templates.TemplateResponse("submitted_video.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
+        else : 
+            print("ERROR")
     # soit check l'extention fichier et en fonction rediriger vers le bon html
     # ou faire 4 fonction et 4 html 
+    
+
+    FILEDIR_sound = "static/file_upload/sound/"
+    sound_extension = ['mp3']
+    @app.post("/submitted_sound/")
+    async def submitted_sound(request: Request, file_input: UploadFile = File(...)):
+        file_extension = file_input.filename.split('.')[-1].lower()
+        file_input.filename = f"{uuid.uuid4()}.mp4"
+        contents = await file_input.read()  # <-- Important!
+
+        if file_extension in sound_extension:
+            # example of how you can save the file
+            with open(f"{FILEDIR_sound}{file_input.filename}", "wb") as f:
+                f.write(contents)
+            
+            sleep(5)
+            file_path = request.url_for("static", path="file_upload/sound/" + file_input.filename)
+            print("file_input.filename : ", file_input.filename)
+            print("file_path : ", file_path)
+            print("file_extension", file_extension)
+            return templates.TemplateResponse("submitted_sound.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
+        else : 
+            print("ERROR")
+    # soit check l'extention fichier et en fonction rediriger vers le bon html
+    # ou faire 4 fonction et 4 html 
+    
+
     return app
