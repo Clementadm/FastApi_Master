@@ -1,11 +1,19 @@
 {% extends "base.html" %} {% block title %}FastAPI Starter{% endblock %} {%
-    block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
-    'include/sidebar.html' %}
-    
-  <body>
-    <!-- Contenu spécifique de la page -->
+  block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
+  'include/sidebar.html' %}
   
-    <h1>Entrez du texte:</h1>
-  </body>
-  </html>
-  {% endblock %} {% block scripts %} {{ super() }} {% endblock %}
+<body>  
+  <h1>Upload a Picture:</h1>
+  <form method="post" action="/submitted_files/" style="margin:0 auto;width:800px;" enctype="multipart/form-data">
+      <div class="form-row">
+        <p style="margin:0 auto;">In order to distinguish if the sound is either negative or positive </p>
+      </div>
+      
+      <div class="mb-3">
+          <input class="form-control" type="file" name="file_input" id="formFile">
+      </div>
+      <button type="submit" class="btn btn-primary">Soumettre</button>
+    </form>
+</body>
+</html>
+{% endblock %} {% block scripts %} {{ super() }} {% endblock %}

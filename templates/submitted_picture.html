@@ -1,0 +1,14 @@
+{% extends "base.html" %} {% block title %}FastAPI Starter{% endblock %} {%
+  block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
+  'include/sidebar.html' %}
+  
+<body>
+  <!-- Contenu spécifique de la page -->
+  <h1>Picture submitted successfully ✅️</h1>
+  <p>Picture upload: {{ file_input }}</p>
+  <img src="{{ file_path }}" class="img-thumbnail" alt="Responsive image" style="width: 10%;height: 10%;">
+  <p><a href="/">Home</a></p>
+
+</body>
+</html>
+{% endblock %} {% block scripts %} {{ super() }} {% endblock %}

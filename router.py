@@ -58,22 +58,44 @@ def configuration_route(app: FastAPI):
             
         return templates.TemplateResponse("submitted.html", {"request": request, "text_input": text_input})
     
-    FILEDIR = "static/file_upload/"
-    @app.post("/submitted_files/")
+    FILEDIR_picture = "static/file_upload/Picture/"
+    @app.post("/submitted_picture/")
     async def create_upload_file(request: Request, file_input: UploadFile = File(...)):
 
         file_input.filename = f"{uuid.uuid4()}.jpg"
         contents = await file_input.read()  # <-- Important!
 
         # example of how you can save the file
-        with open(f"{FILEDIR}{file_input.filename}", "wb") as f:
+        with open(f"{FILEDIR_picture}{file_input.filename}", "wb") as f:
+            f.write(contents)
+
+        sleep(5)
+        file_path = request.url_for("static", path="file_upload/Picture/" + file_input.filename)
+        print("file_input.filename : ", file_input.filename)
+        print("file_path : ", file_path)
+
+        return templates.TemplateResponse("submitted_picture.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
+    # soit check l'extention fichier et en fonction rediriger vers le bon html
+    # ou faire 4 fonction et 4 html 
+
+
+    FILEDIR_picture = "static/file_upload/video/"
+    @app.post("/submitted_video/")
+    async def create_upload_file(request: Request, file_input: UploadFile = File(...)):
+
+        file_input.filename = f"{uuid.uuid4()}.mp4"
+        contents = await file_input.read()  # <-- Important!
+
+        # example of how you can save the file
+        with open(f"{FILEDIR_picture}{file_input.filename}", "wb") as f:
             f.write(contents)
         
+        sleep(5)
+        file_path = request.url_for("static", path="file_upload/video/" + file_input.filename)
         print("file_input.filename : ", file_input.filename)
-        sleep(10)
-        print("file_input.filename : ", file_input.filename)
-        file_path = request.url_for("static", path="file_upload/"+file_input.filename)
-        return templates.TemplateResponse("submitted_files.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
+        print("file_path : ", file_path)
+        
+        return templates.TemplateResponse("submitted_video.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
     # soit check l'extention fichier et en fonction rediriger vers le bon html
     # ou faire 4 fonction et 4 html 
     return app

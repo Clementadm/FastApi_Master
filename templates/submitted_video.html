@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %}FastAPI Starter{% endblock %} {%
+  block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
+  'include/sidebar.html' %}
+  
+<body>
+  <!-- Contenu spécifique de la page -->
+  <h1>Video submitted successfully ✅️</h1>
+  <p>Video upload: {{ file_input }}</p>
+  <div class="embed-responsive embed-responsive-16by9" style="margin:0 auto;width:500px;border-radius: 20px;">
+    <iframe class="embed-responsive-item" src="{{ file_path }}" allowfullscreen></iframe>
+  </div>
+  <p><a href="/">Home</a></p>
+
+</body>
+</html>
+{% endblock %} {% block scripts %} {{ super() }} {% endblock %}
