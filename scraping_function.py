@@ -9,10 +9,12 @@ def scrap_url_user(url_input):
     if page.status_code == 200:
         soup = BeautifulSoup(page.content, 'html.parser')
         title_page = soup.title
-        content = soup.get_text()
-        print(content)
+        # content = soup.get_text()
+        content = soup.body.get_text()
+        return content
     else :
-        print("Error whan scraping ", str(url_input), " check the scrap_url_user function")
+        return "Error when scraping ", str(url_input), " check the scrap_url_user function"
+        # print("Error when scraping ", str(url_input), " check the scrap_url_user function")
 
 
     # pas prendre en compte les \n ? ==> perte de notion de titre, contenu, ... 

@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from time import sleep
 import uuid
 from scraping_function import scrap_url_user
+from model_analyse_sentiment import print_result
 
 def configuration_route(app: FastAPI):
     app.mount(
@@ -46,15 +47,20 @@ def configuration_route(app: FastAPI):
     # Gérer la soumission du formulaire Text
     @app.post("/submit/")
     def submitted_text(request: Request, text_input: str = Form(...), RadioToChooseTEXTorURL: str = Form(...)):
-        # print(text_input, "\n", RadioToChooseTEXTorURL)
+        print(text_input, ", type = ", type(text_input), "\n", RadioToChooseTEXTorURL)
 
         # Vérification de si l'utilisateur à remplie du text ou une URL
         if RadioToChooseTEXTorURL=="HaveChooseText":
-            print("1-HaveChooseText", RadioToChooseTEXTorURL)
+            print("HaveChooseText")
+            text_input = print_result(text_input)
+
         if RadioToChooseTEXTorURL=="HaveChooseURL":
             # scraper le text du body de l'URL
-            print("2-HaveChooseURL", RadioToChooseTEXTorURL)
             print(scrap_url_user(text_input))
+            scrap_text=scrap_url_user(text_input)
+            
+            text_input = print_result(scrap_text)
+            # print("2-HaveChooseURL", RadioToChooseTEXTorURL, " print_result(text_input) ", print_result(text_input))
             
         return templates.TemplateResponse("submitted.html", {"request": request, "text_input": text_input})
     
