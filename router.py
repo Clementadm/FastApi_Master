@@ -6,6 +6,7 @@ from fastapi.staticfiles import StaticFiles
 from time import sleep
 import uuid
 from scraping_function import scrap_url_user
+from model_analyse_sentiment import print_result
 
 def configuration_route(app: FastAPI):
     app.mount(
