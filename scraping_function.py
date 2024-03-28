@@ -13,8 +13,7 @@ def scrap_url_user(url_input):
         content = soup.body.get_text()
         return content
     else :
-        return "Error when scraping ", str(url_input), " check the scrap_url_user function"
-        # print("Error when scraping ", str(url_input), " check the scrap_url_user function")
+        print(f"Error occured when scraping {str(url_input)}, please check the scrap_url_user function")
 
 
     # pas prendre en compte les \n ? ==> perte de notion de titre, contenu, ... 
