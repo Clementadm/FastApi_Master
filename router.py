@@ -24,9 +24,9 @@ def configuration_route(app: FastAPI):
             "titreVideo": "GoToVideo"
     }
     submit_file = {
-        'picture': {'path': "static/file_upload/Picture/", 'extension': 'jpg'},
-        'video': {'path': "static/file_upload/Video/", 'extension': 'mp4'},
-        'audio': {'path': "static/file_upload/Audio/", 'extension': 'mp3'},
+        'picture': {'path': "file_upload/Picture/", 'extension': 'jpg'},
+        'video': {'path': "file_upload/Video/", 'extension': 'mp4'},
+        'audio': {'path': "file_upload/Audio/", 'extension': 'mp3'},
     }
     submit_type = {
         'jpg': 'picture',
@@ -96,11 +96,12 @@ def configuration_route(app: FastAPI):
         file_input.filename = f"{uuid.uuid4()}.{file_extension}"
         contents = await file_input.read()  # <-- Important!
 
-        with open(f"{file_path}{file_input.filename}", "wb") as f:
+        with open(f"static/{submit_file[file_type]['path']}{file_input.filename}", "wb") as f:
             f.write(contents)
 
         sleep(5)
         file_path = request.url_for("static", path=f'{file_path}{file_input.filename}')
+        print(file_path)
 
         return templates.TemplateResponse(
             f"submitted_{file_type}.html",
