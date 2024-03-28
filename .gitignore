@@ -1,4 +1,4 @@
-ProjectMasterEnv/
+envFastApi/
 Env/
 *.pyc
 */__pycache__/
