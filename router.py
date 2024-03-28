@@ -97,7 +97,7 @@ def configuration_route(app: FastAPI):
         file_input.filename = f"{uuid.uuid4()}.{file_extension}"
         contents = await file_input.read()  # <-- Important!
 
-        with open(f"static/{submit_file[file_type]['path']}{file_input.filename}", "wb") as f:
+        with open(f"static/{file_path}{file_input.filename}", "wb") as f:
             f.write(contents)
 
         sleep(5)
