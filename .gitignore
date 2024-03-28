@@ -1,4 +1,4 @@
 ProjectMasterEnv/
 Env/
-*/__pycache__/
 *.pyc
+*/__pycache__/
