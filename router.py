@@ -101,49 +101,5 @@ def configuration_route(app: FastAPI):
             f"submitted_{file_type}.html",
             {"request": request, "file_input": file_input.filename, "file_path": file_path}
         )
-
-    # @app.post("/submitted_video/")
-    # async def submitted_video(request: Request, file_input: UploadFile = File(...)):
-    #     file_extension = file_input.filename.split('.')[-1].lower()
-    #     file_input.filename = f"{uuid.uuid4()}.mp4"
-    #     contents = await file_input.read()  # <-- Important!
-    #
-    #     if file_extension in video_extension:
-    #         # example of how you can save the file
-    #         with open(f"{FILEDIR_video}{file_input.filename}", "wb") as f:
-    #             f.write(contents)
-    #
-    #         sleep(5)
-    #         file_path = request.url_for("static", path="file_upload/video/" + file_input.filename)
-    #         print("file_input.filename : ", file_input.filename)
-    #         print("file_path : ", file_path)
-    #         print("file_extension", file_extension)
-    #         return templates.TemplateResponse("submitted_video.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
-    #     else :
-    #         print("ERROR")
-    # # soit check l'extention fichier et en fonction rediriger vers le bon html
-    # # ou faire 4 fonction et 4 html
-    #
-    # @app.post("/submitted_sound/")
-    # async def submitted_sound(request: Request, file_input: UploadFile = File(...)):
-    #     file_extension = file_input.filename.split('.')[-1].lower()
-    #     file_input.filename = f"{uuid.uuid4()}.mp4"
-    #     contents = await file_input.read()  # <-- Important!
-    #
-    #     if file_extension in sound_extension:
-    #         # example of how you can save the file
-    #         with open(f"{FILEDIR_sound}{file_input.filename}", "wb") as f:
-    #             f.write(contents)
-    #
-    #         sleep(5)
-    #         file_path = request.url_for("static", path="file_upload/sound/" + file_input.filename)
-    #         print("file_input.filename : ", file_input.filename)
-    #         print("file_path : ", file_path)
-    #         print("file_extension", file_extension)
-    #         return templates.TemplateResponse("submitted_sound.html", {"request": request, "file_input": file_input.filename, "file_path": file_path})
-    #     else:
-    #         print("ERROR")
-    # # soit check l'extention fichier et en fonction rediriger vers le bon html
-    # # ou faire 4 fonction et 4 html
-
+    
     return app
