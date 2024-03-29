@@ -50,20 +50,9 @@ def configuration_route(app: FastAPI):
     def Text(request: Request):
         return templates.TemplateResponse("Text.html", {"request": request, "data": data})
 
-    # @app.get('/Video', response_class=HTMLResponse)
-    # def Video(request: Request):
-    #     return templates.TemplateResponse("Video.html", {"request": request, "data": data})
     @app.get('/Upload_files', response_class=HTMLResponse)
     def Video(request: Request):
         return templates.TemplateResponse("Upload_files.html", {"request": request, "data": data})
-
-    # @app.get('/Sound', response_class=HTMLResponse)
-    # def Sound(request: Request):
-    #     return templates.TemplateResponse("Sound.html", {"request": request, "data": data})
-
-    # @app.get('/Picture', response_class=HTMLResponse)
-    # def Picture(request: Request):
-    #     return templates.TemplateResponse("Picture.html", {"request": request, "data": data})
 
     # Gérer la soumission du formulaire Text
     @app.post("/submit/")
