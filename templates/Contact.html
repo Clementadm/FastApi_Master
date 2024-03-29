@@ -2,14 +2,40 @@
     block head %} {{ super() }} {% endblock %} {% block page_content %} {% include
     'include/sidebar.html' %}
     
-  <body>
-    <!-- Contenu spécifique de la page -->
-
-    <!-- Boutons pour naviguer vers différentes pages -->
-    <div class="btn-group">
-      <a class="btn" href="/Text">{{data.titreText}}</a>
-      <a class="btn" href="/Upload_files">{{data.titreFile}}</a>
-    </div>
-  </body>
+    <body>
+        <!-- Formulaire de contact -->
+    
+            <form id="fs-frm" name="Project-Master-form" accept-charset="utf-8" action="https://formspree.io/f/xdoqwdod" method="post">
+                <fieldset id="fs-frm-inputs">
+                    <div class="mb-3">
+                        <label for="full-name">Full Name</label>
+                        <input type="text" name="name" id="full-name" placeholder="First and Last" required="">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email-address">Email Address</label>
+                        <input type="email" name="_replyto" id="email-address" placeholder="email@domain.com" required="">
+                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="reason_contact">What is driving you to contact us?</label>
+                        <select name="reason_contact" id="reason_contact" required="">
+                            <option value="" selected="" disabled="">Select</option>
+                            <option value="dev_contact">Contact the creators</option>
+                            <option value="Request Information">Customer Information</option>
+                            <option value="bug_report"> Bug Report</option>
+                            <option value="Job Offer">Job Offer</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea rows="5" name="message" id="message" placeholder="Please insert a message." required=""></textarea>
+                    </div>
+                    <input type="hidden" name="_subject" id="email-subject" value="Projet master Contact Form Submission">
+                </fieldset>
+                <!-- <input type="submit" value="Send Message"> -->
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+    </body>
+    
 </html>
 {% endblock %} {% block scripts %} {{ super() }} {% endblock %}

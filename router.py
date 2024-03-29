@@ -102,4 +102,8 @@ def configuration_route(app: FastAPI):
             {"request": request, "file_input": file_input.filename, "file_path": file_path}
         )
     
+    @app.get('/Contact')
+    def Contact(request: Request):
+        return templates.TemplateResponse("Contact.html", {"request": request, "data": data})
+    
     return app
