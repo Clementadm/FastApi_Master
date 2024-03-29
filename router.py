@@ -106,4 +106,8 @@ def configuration_route(app: FastAPI):
     def Contact(request: Request):
         return templates.TemplateResponse("Contact.html", {"request": request, "data": data})
     
+    @app.get('/CGU', response_class=HTMLResponse)
+    def Video(request: Request):
+        return templates.TemplateResponse("CGU.html", {"request": request, "data": data})
+    
     return app
